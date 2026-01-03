@@ -1,0 +1,47 @@
+/* Center the dashboard title in the ProCard header */
+.dashboard-title-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  font-weight: 600;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+}
+/* Responsive dashboard grid and translucent card styles */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+  gap: 32px;
+  padding: 40px 0;
+}
+
+.dashboard-card {
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+  border-radius: 18px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  color: #222;
+  backdrop-filter: blur(8px);
+}
+.dashboard-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.12);
+}
+.dashboard-icon {
+  margin-bottom: 12px;
+  color: #1677ff;
+}
+.dashboard-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+.dashboard-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1677ff;
+  opacity: 0.85;
+}

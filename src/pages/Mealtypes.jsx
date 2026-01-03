@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from '../helpers/axios';
-import { Button, message, Tabs } from 'antd';
+import { Button, message, Tabs, Tag } from 'antd';
 import {
     PageContainer,
     ProCard,
@@ -44,11 +44,11 @@ export default function Assettypes() {
                         title: 'Status',
                         dataIndex: 'ma_mealtype_status',
                         key: 'ma_mealtype_status',
-                        render: (_, record) => {
-                            const statusText = record.ma_mealtype_status === 1 ? 'Active' : 'Inactive';
-                            const statusColor = record.ma_mealtype_status === 1 ? 'green' : 'red';
-                            return <span style={{ color: statusColor }}>{statusText}</span>;
-                        },
+                        render: (_, record) => (
+                            <Tag color={record.ma_mealtype_status === 1 ? 'green' : 'red'}>
+                                {record.ma_mealtype_status === 1 ? 'Active' : 'Inactive'}
+                            </Tag>
+                        ),
                     },
                     {
                         title: 'Action',
@@ -68,7 +68,6 @@ export default function Assettypes() {
                 ]}
                 request={async () => {
                     const { data } = await axios.get('/mealtypes');
-                    //console.log("Mealtypes", data);
                     return {
                         data: data,
                         success: true,

@@ -52,9 +52,55 @@ export default function MainLayout() {
                     icon: <FiBriefcase />,
                 },
                 {
-                    path: "/Payments",
-                    name: "Payments",
+                    path: "/attendance",
+                    name: "Attendance",
                     icon: <FiBriefcase />,
+                },
+                {
+                    path: "/assessment",
+                    name: "Assessments",
+                    icon: <FiBriefcase />,
+                    children: [
+                        {
+                            path: "/assessment/assessment",
+                            name: "Dashboard",
+                            icon: <FiUsers />,
+                        },
+                        {
+                            path: "/assessment/records",
+                            name: "Records",
+                            icon: <FiUsers />,
+                        },
+                        {
+                            path: "/assessment/types",
+                            name: "Types",
+                            icon: <FiUsers />,
+                        },
+                    ],
+                },
+                {
+                    path: "/fees",
+                    name: "Fees",
+                    icon: <FiBriefcase />,
+                    children: [
+                        {
+                            path: "/fees/feepayments",
+                            name: "Payments",
+                            icon: <FiUsers />,
+                        },
+                        {
+                            path: "/fees/feestructure",
+                            name: "Fee Structures",
+                            icon: <FiUsers />,
+                        },
+
+                        {
+                            path: "/fees/paymenttypes",
+                            name: "Payment Types",
+                            icon: <FiUsers />,
+                        },
+                    ]
+
                 },
                 // Sample Role based views
                 // user_id && user_id === 1 && 
@@ -108,6 +154,11 @@ export default function MainLayout() {
                         {
                             path: "/masters/exams",
                             name: "Exams",
+                            icon: <FiUsers />,
+                        },
+                        {
+                            path: "/terms",
+                            name: "Terms",
                             icon: <FiUsers />,
                         },
                         {

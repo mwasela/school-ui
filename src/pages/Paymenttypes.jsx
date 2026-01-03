@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from '../helpers/axios';
-import { Button, message, Tabs } from 'antd';
+import { Button, message, Tag } from 'antd';
 import {
     PageContainer,
     ProCard,
@@ -44,11 +44,11 @@ export default function Assettypes() {
                         title: 'Status',
                         dataIndex: 'ma_paymenttype_status',
                         key: 'ma_paymenttype_status',
-                        render: (_, record) => {
-                            const statusText = record.ma_paymenttype_status === 1 ? 'Active' : 'Inactive';
-                            const statusColor = record.ma_paymenttype_status === 1 ? 'green' : 'red';
-                            return <span style={{ color: statusColor }}>{statusText}</span>;
-                        },
+                        render: (_, record) => (
+                            record.ma_paymenttype_status === 1 ?
+                                <Tag color="green">Active</Tag> :
+                                <Tag color="red">Inactive</Tag>
+                        ),
                     },
                     {
                         title: 'Action',
@@ -78,6 +78,7 @@ export default function Assettypes() {
                 pagination={{ pageSize: 10 }}
                 search={false}
                 toolBarRender={false}
+                scroll={{ x: 'max-content' }}
                 dateFormatter="string"
                 options={{
                     fullScreen: true,

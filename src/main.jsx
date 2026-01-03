@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       theme={{
         token: {
           fontFamily: "Inter, sans-serif",
-          colorPrimary: "#153037",
+          colorPrimary: "#086f08ff",
         },
       }}
     >

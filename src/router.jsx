@@ -18,8 +18,14 @@ import Teachertypes from "./pages/Teachertypes";
 import Workers from "./pages/Workers";
 import Workertypes from "./pages/Workertypes";
 import Parents from "./pages/Parents";
-import Payments from "./pages/Payments";
 import Paymenttypes from "./pages/Paymenttypes";
+import Feepayments from "./pages/Feepayments";
+import Feestructure from "./pages/Feestructure";
+import Terms from "./pages/Terms";
+import Assessment from "./pages/Assessment";
+import Assessmentrecords from "./pages/Assessmentrecords";
+import Assessmenttypes from "./pages/Assessmenttypes";
+import Attendance from "./pages/Attendance";
 
 
 
@@ -33,6 +39,7 @@ const router = createBrowserRouter([
       children: [
         
         { path: "/", element: <Home /> },
+        { path: "attendance", element: <Attendance /> },
         { path: "masters/students", element: <Students /> },
         { path: "masters/classes", element: <Classes /> },
         { path: "masters/streams", element: <Streams /> },
@@ -41,6 +48,7 @@ const router = createBrowserRouter([
         { path: "masters/subjects", element: <Subjects /> },
         { path: "masters/subjecttypes", element: <Subjecttypes /> },
         { path: "masters/exams", element: <Exams /> },
+        { path: "terms", element: <Terms /> },
         { path: "masters/meals", element: <Meals /> },
         { path: "masters/mealtypes", element: <Mealtypes /> },
         { path: "masters/parents", element: <Parents /> },
@@ -48,8 +56,12 @@ const router = createBrowserRouter([
         { path: "masters/assets", element: <Assets /> },
         { path: "masters/workers", element: <Workers /> },
         { path: "masters/workertypes", element: <Workertypes /> },
-        { path: "/payments", element: <Payments /> },
-        { path: "masters/paymenttypes", element: <Paymenttypes /> },
+        { path: "fees/paymenttypes", element: <Paymenttypes /> },
+        { path: "fees/feepayments", element: <Feepayments />},
+        { path: "fees/feestructure", element: <Feestructure />},
+        { path: "assessment/assessment", element: <Assessment /> },
+        { path: "assessment/records", element: <Assessmentrecords /> },
+        { path: "assessment/types", element: <Assessmenttypes /> },
    
       ],
     },

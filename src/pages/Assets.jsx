@@ -21,7 +21,7 @@ export default function Assets() {
 
                 <Button
                   type="primary"
-                  style={{ marginBottom: 16 , marginLeft: 25, marginTop: 25}}
+                  style={{ marginBottom: 16 }}
                   onClick={() => {
                     setCurrentRecord(null);
                     setVisible(true);
@@ -43,18 +43,31 @@ export default function Assets() {
                       title: 'Asset Type',
                       dataIndex: ['assetType','ma_assettype_name'],
                       key: 'ma_asset_type',
-                      valueType: 'text',
+                      valueType: 'select',
+                      request: async () => {
+                        const { data } = await axios.get('/assettypes');
+                        return data.map((item) => ({
+                          label: item.ma_assettype_name,
+                          value: item.id,
+                        }));
+                      },
                     },
                     {
                       title: 'Target Device',
                       dataIndex: 'ma_asset_description',
                       key: 'ma_asset_description',
                       valueType: 'text',
+                      search: false,
                     },
                     {
                       title: 'Status',
                       dataIndex: 'ma_asset_status',
                       key: 'ma_asset_status',
+                      valueType: 'select',
+                      valueEnum: {
+                        1: { text: 'Active' },
+                        2: { text: 'Inactive' },
+                      },
                       render: (_, record) => {
                         const statusText = record.ma_asset_status === 1 ? 'Active' : 'Inactive';
                         const statusColor = record.ma_asset_status === 1 ? 'green' : 'red';
@@ -64,6 +77,7 @@ export default function Assets() {
                     {
                       title: 'Action',
                       dataIndex: 'action',
+                      search: false,
                       render: (_, record) => (
                         <Button
                           type="primary"
@@ -77,25 +91,31 @@ export default function Assets() {
                       ),
                     },
                   ]}
-                  request={async () => {
-                    const { data } = await axios.get('/assets');
+                  request={async (params, sort, filter) => {
+                    const { data } = await axios.get('/assets', {
+                      params: {
+                        current: params.current,
+                        pageSize: params.pageSize,
+                        ...params,
+                      }
+                    });
                     //console.log("assets",data);
                     return {
                       data: data,
                       success: true,
+                      total: data.length,
                     };
                   }}
                   rowKey="id"
                   pagination={{ pageSize: 10 }}
-                  search={false}
+                  
                   dateFormatter="string"
                   options={{
                     fullScreen: true,
                     reload: true,
                     setting: true,
                   }}
-                  tableAlertRender={false}
-                  tableAlertOptionRender={false}
+            
                 />
             
             
